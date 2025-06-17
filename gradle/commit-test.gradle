@@ -1,0 +1,25 @@
+apply plugin: 'jacoco'
+
+test {
+    finalizedBy jacocoTestReport
+
+    exclude '**/deployment/*'
+    exclude '**/specs/*'
+    exclude '**/*AcceptanceTest*'
+    exclude '**/*LearningTest*'
+    exclude '**/*Console*'
+}
+
+jacoco {
+    toolVersion = "0.8.7"
+}
+
+jacocoTestReport {
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    '**/model/**/Q**'
+            ])
+        }))
+    }
+}
