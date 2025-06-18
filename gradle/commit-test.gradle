@@ -1,6 +1,8 @@
 apply plugin: 'jacoco'
 
 test {
+    useJUnitPlatform()
+    
     dependsOn startTestInfra, waitForTestInfra
     finalizedBy stopTestInfra, jacocoTestReport
 

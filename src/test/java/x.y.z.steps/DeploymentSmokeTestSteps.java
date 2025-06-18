@@ -9,8 +9,8 @@ import org.springframework.boot.actuate.autoconfigure.web.server.LocalManagement
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DeploymentSmokeTestSteps {
 
@@ -33,7 +33,7 @@ public class DeploymentSmokeTestSteps {
 
     @Then("I should receive a status of \"UP\"")
     public void iShouldReceiveAStatusOfUP() {
-        assertEquals("Health endpoint should return HTTP 200", HttpStatus.OK, healthResponse.getStatusCode());
-        assertTrue("Response should contain status UP", healthResponse.getBody().contains("\"status\":\"UP\""));
+        assertEquals(HttpStatus.OK, healthResponse.getStatusCode(), "Health endpoint should return HTTP 200");
+        assertTrue(healthResponse.getBody().contains("\"status\":\"UP\""), "Response should contain status UP");
     }
 }
