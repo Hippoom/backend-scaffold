@@ -27,6 +27,12 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+
+    implementation "org.flywaydb:flyway-core:7.15.0"
+    implementation "org.postgresql:postgresql:42.7.2"
+
+
     // Lombok
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
