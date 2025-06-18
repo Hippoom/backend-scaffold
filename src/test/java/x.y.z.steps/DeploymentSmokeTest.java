@@ -11,10 +11,7 @@ import org.junit.platform.suite.api.Suite;
 @SelectClasspathResource("x/y/z/steps")
 @ConfigurationParameter(key = Constants.FEATURES_PROPERTY_NAME, value = "src/test/resources/features")
 @ConfigurationParameter(key = Constants.GLUE_PROPERTY_NAME, value = "x.y.z.steps")
-@ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME, value = "pretty")
 @ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME, 
-    value = "html:build/cucumber-reports/cucumber-pretty.html")
-@ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME, 
-    value = "json:build/cucumber-reports/CucumberTestReport.json")
+    value = "pretty,html:build/cucumber-reports/cucumber-pretty.html,json:build/cucumber-reports/CucumberTestReport.json")
 public class DeploymentSmokeTest {
 }
