@@ -1,7 +1,8 @@
 apply plugin: 'jacoco'
 
 test {
-    finalizedBy jacocoTestReport
+    dependsOn startTestInfra, waitForTestInfra
+    finalizedBy stopTestInfra, jacocoTestReport
 
     exclude '**/deployment/*'
     exclude '**/specs/*'
