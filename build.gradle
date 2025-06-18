@@ -7,6 +7,7 @@ plugins {
 apply from: 'gradle/git-hooks.gradle'
 apply from: 'gradle/checkstyle.gradle'
 apply from: 'gradle/commit-test.gradle'
+apply from: 'gradle/docker-compose.gradle'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
