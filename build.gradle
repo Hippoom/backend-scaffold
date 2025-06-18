@@ -1,15 +1,35 @@
+buildscript {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath 'com.github.passsy:gradle-gitVersioner-plugin:0.5.0'
+    }
+}
+
 plugins {
     id 'org.springframework.boot' version '2.7.18'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'com.gorylenko.gradle-git-properties' version '2.5.0'
 }
 
 apply from: 'gradle/docker-compose.gradle'
 apply from: 'gradle/git-hooks.gradle'
 apply from: 'gradle/checkstyle.gradle'
 apply from: 'gradle/commit-test.gradle'
+apply plugin: 'com.pascalwelsch.gitversioner'
 
-version = '0.0.1-SNAPSHOT'
+gitVersioner {
+    baseBranch 'main'
+    yearFactor 1000
+    addSnapshot true
+    addLocalChangesDetails true
+}
+
+version = gitVersioner.versionName
 sourceCompatibility = '1.8'
 
 ext {
@@ -54,8 +74,4 @@ dependencies {
     testImplementation "io.cucumber:cucumber-junit-platform-engine:${cucumberVersion}"
     testImplementation "io.cucumber:cucumber-spring:${cucumberVersion}"
 }
-
-
-
-
 
